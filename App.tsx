@@ -5,6 +5,17 @@ import { Home } from './src/pages/Home';
 import { Culture } from './src/pages/Culture';
 import { Park } from './src/pages/Park';
 import { Overnight } from './src/pages/Overnight';
+import { CultureCarousel } from './src/pages/Culture/CultureCarousel';
+import { ParkCarousel } from './src/pages/Park/ParkCarousel';
+import { OvernightCarousel } from './src/pages/Overnight/OvernightCarousel';
+
+export interface IRootStackParamList {
+  Home: undefined;
+  Culture: undefined;
+  CultureCarousel: undefined;
+  Park: undefined;
+  Overnight: undefined;
+}
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -20,8 +31,11 @@ export default function App() {
       <Stack.Navigator>
         <Stack.Screen name="Home" component={Home} options={{ title: "Início" }}></Stack.Screen>
         <Stack.Screen name="Culture" component={Culture} options={{ title: "Cultura" }}></Stack.Screen>
+        <Stack.Screen name="CultureCarousel" component={CultureCarousel} options={{ title: "Cultura" }}></Stack.Screen>
         <Stack.Screen name="Park" component={Park} options={{ title: "Parques" }}></Stack.Screen>
+        <Stack.Screen name="ParkCarousel" component={ParkCarousel} options={{ title: "Parques" }}></Stack.Screen>
         <Stack.Screen name="Overnight" component={Overnight} options={{ title: "Noturno" }}></Stack.Screen>
+        <Stack.Screen name="OvernightCarousel" component={OvernightCarousel} options={{ title: "Noturno" }}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   );

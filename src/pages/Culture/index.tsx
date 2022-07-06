@@ -1,24 +1,25 @@
 import React from "react";
-import { Image, SafeAreaView, ScrollView, Text, View } from "react-native";
+import { SafeAreaView } from "react-native";
+import { CategoryContent } from "../../components/Category/CategoryContent";
 import { Footer } from "../../components/Footer";
 import { Header } from "../../components/Header";
+import { useChangeView } from "../../hooks/useChangeView";
 
 import { styles } from "./styles";
 
-export function Culture() {
+interface ICultureProps {
+  route: any;
+};
+
+export function Culture({ route }: ICultureProps) {
+
+  const { showInfo, setShowInfo } = useChangeView();
+
   return (
     <SafeAreaView style={styles.container}>
       <Header isHomeScreen={false} />
-      <ScrollView >
-        <View style={styles.container}>
-          <Text style={styles.title}>Casa das Rosas - Espaço Haroldo de Campos de Poesia e Literatura</Text>
-          <Image style={styles.image} source={require("../../public/images/casa-das-rosas.jpg")} />
-          <Text style={styles.paragraph}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin cursus vestibulum. Pellentesque eu dictum mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi posuere tellus ut euismod auctor. Vivamus ultricies at nunc quis congue. In tempor erat faucibus, convallis lacus eget, pretium turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus gravida purus eget aliquet imperdiet. Curabitur eget leo tempor, tincidunt dolor ut, vulputate massa. Nulla et sem sit amet nisl scelerisque vehicula vitae sit amet eros. Maecenas pretium, ante ut fermentum consectetur, massa lacus porttitor mauris, sed bibendum libero ligula sed dui. Curabitur id finibus est, nec iaculis nunc. Quisque vitae congue massa. Curabitur malesuada fermentum nunc id dictum.
-          </Text>
-        </View>
-      </ScrollView>
-      <Footer isHomeScreen={false} />
+      <CategoryContent route={route} showInfo={showInfo} />
+      <Footer isCarouselOrHomeScreen={false} setShowImage={() => setShowInfo(false)} setShowInfo={() => setShowInfo(true)} />
     </SafeAreaView>
   );
 };

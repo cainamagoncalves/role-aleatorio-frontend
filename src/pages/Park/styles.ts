@@ -10,27 +10,4 @@ export const styles = StyleSheet.create({
     flex: 1,
     padding: 10
   },
-
-  image: {
-    borderRadius: 5,
-    resizeMode: "stretch",
-    margin: 10,
-    width: 300,
-    height: 200
-  },
-
-  title: {
-    fontWeight: "bold",
-    fontSize: 20,
-    opacity: 1,
-    textAlign: "center",
-    color: "#ffffff"
-  },
-
-  paragraph: {
-    fontSize: 18,
-    opacity: 1,
-    textAlign: "center",
-    color: "#ffffff"
-  },
 });

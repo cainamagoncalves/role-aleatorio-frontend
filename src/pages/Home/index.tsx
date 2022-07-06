@@ -12,7 +12,7 @@ export function Home({ navigation }: any) {
       <CategoryCard category="Cultura" navigation={navigation} />
       <CategoryCard category="Parques" navigation={navigation} />
       <CategoryCard category="Noturno" navigation={navigation} />
-      <Footer isHomeScreen={true} />
+      <Footer isCarouselOrHomeScreen={true} />
     </View>
   );
 }

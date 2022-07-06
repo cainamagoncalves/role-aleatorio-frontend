@@ -4,20 +4,22 @@ import { FontAwesome } from "@expo/vector-icons"
 import { styles } from "./styles";
 
 interface IFooterProps {
-  isHomeScreen: boolean;
+  isCarouselOrHomeScreen: boolean;
+  setShowInfo?: () => void;
+  setShowImage?: () => void;
 }
 
-export function Footer({ isHomeScreen }: IFooterProps) {
+export function Footer({ isCarouselOrHomeScreen, setShowInfo, setShowImage }: IFooterProps) {
   return (
     <>
-      {isHomeScreen ? (
+      {isCarouselOrHomeScreen ? (
         <View style={styles.homeContainer}>
           <Image source={require("../../public/images/univespLogo.png")} style={styles.image} />
         </View>
       ) : (
         <View style={styles.otherPagesContainer}>
-          <FontAwesome name="location-arrow" size={30} color="white"/>
-          <FontAwesome name="book" size={30} color="white"/>
+          <FontAwesome onPress={setShowImage} name="location-arrow" size={30} color="white"/>
+          <FontAwesome onPress={setShowInfo} name="book" size={30} color="white"/>
           <FontAwesome name="star" size={30} color="white"/>
           <FontAwesome name="money" size={30} color="white"/>
         </View>

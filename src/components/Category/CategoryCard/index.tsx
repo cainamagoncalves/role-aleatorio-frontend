@@ -10,15 +10,15 @@ interface ICategoryCardProps {
 const categories = {
   CULTURA: {
     imageSrc: require("../../../public/images/culture.jpg"),
-    navigationPath: "Culture",
+    navigationPath: "CultureCarousel",
   },
   NOTURNO: {
     imageSrc: require("../../../public/images/overnight.jpg"),
-    navigationPath: "Overnight",
+    navigationPath: "OvernightCarousel",
   },
   PARQUES: {
     imageSrc: require("../../../public/images/park.jpg"),
-    navigationPath: "Park",
+    navigationPath: "ParkCarousel",
   },
 }
 

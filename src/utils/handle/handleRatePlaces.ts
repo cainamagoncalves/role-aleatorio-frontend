@@ -11,7 +11,16 @@ async function handleRatePlace(id: number) {
         onPress: () => { },
         style: "cancel"
       },
-      { text: "OK", onPress: async () => await api.put(`/place/${id}`) }
+      {
+        text: "OK", onPress: async function run() {
+          try {
+            await api.put(`/places/${id}`)
+            Alert.alert("Local avaliado com sucesso!")
+          } catch (error: any) {
+            Alert.alert("Ocorreu um erro ao avaliar o local. Tente novamente mais tarde!")
+          }
+        }
+      }
     ]
   )
 };

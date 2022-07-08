@@ -1,24 +1,32 @@
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import { Carousel } from "../../../components/Carousel";
 import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Header";
-import { NavigationProps } from "../../../utils/routeTypes/route-types";
+import { useFetch } from "../../../hooks/useCategory";
+import { ICategoryDTO } from "../../../utils/dto/ICategoryDTO";
+import { CategoryRouteProps, NavigationProps } from "../../../utils/routeTypes/route-types";
 import { styles } from "../styles";
 
-interface IOvernightCarouselProps extends NavigationProps {}
+interface IOvernightCarouselProps extends NavigationProps, CategoryRouteProps { }
 
-const data = [
-  { id: 0, src: require("../../../public/images/casa-das-rosas.jpg"), title: "Casa das Rosas", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin cursus vestibulum. Pellentesque eu dictum mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi posuere tellus ut euismod auctor. Vivamus ultricies at nunc quis congue. In tempor erat faucibus, convallis lacus eget, pretium turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus gravida purus eget aliquet imperdiet. Curabitur eget leo tempor, tincidunt dolor ut, vulputate massa. Nulla et sem sit amet nisl scelerisque vehicula vitae sit amet eros. Maecenas pretium, ante ut fermentum consectetur, massa lacus porttitor mauris, sed bibendum libero ligula sed dui. Curabitur id finibus est, nec iaculis nunc. Quisque vitae congue massa. Curabitur malesuada fermentum nunc id dictum." },
-  { id: 1, src: require("../../../public/images/overnight.jpg"), title: "Parque noturno", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin cursus vestibulum. Pellentesque eu dictum mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi posuere tellus ut euismod auctor. Vivamus ultricies at nunc quis congue. In tempor erat faucibus, convallis lacus eget, pretium turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus gravida purus eget aliquet imperdiet. Curabitur eget leo tempor, tincidunt dolor ut, vulputate massa. Nulla et sem sit amet nisl scelerisque vehicula vitae sit amet eros. Maecenas pretium, ante ut fermentum consectetur, massa lacus porttitor mauris, sed bibendum libero ligula sed dui. Curabitur id finibus est, nec iaculis nunc. Quisque vitae congue massa. Curabitur malesuada fermentum nunc id dictum."  },
-  { id: 2, src: require("../../../public/images/marioCovasPark.jpg"), title: "Parque Mario Covas", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin cursus vestibulum. Pellentesque eu dictum mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi posuere tellus ut euismod auctor. Vivamus ultricies at nunc quis congue. In tempor erat faucibus, convallis lacus eget, pretium turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus gravida purus eget aliquet imperdiet. Curabitur eget leo tempor, tincidunt dolor ut, vulputate massa. Nulla et sem sit amet nisl scelerisque vehicula vitae sit amet eros. Maecenas pretium, ante ut fermentum consectetur, massa lacus porttitor mauris, sed bibendum libero ligula sed dui. Curabitur id finibus est, nec iaculis nunc. Quisque vitae congue massa. Curabitur malesuada fermentum nunc id dictum."  }
-];
+export function OvernightCarousel({ navigation, route }: IOvernightCarouselProps) {
 
-export function OvernightCarousel({ navigation }: IOvernightCarouselProps) {
+  const { categoryId } = route.params;
+  const { data: category, isFetching, error } = useFetch<ICategoryDTO>(`/category/${categoryId}`)
+
   return (
     <View style={styles.container}>
       <Header isHomeScreen={false} />
-      <Carousel data={data} navigation={navigation} category="Noturno" />
-      <Footer isCarouselOrHomeScreen={true}/>
+      {isFetching ? (
+        <Text style={{ flex: 1, color: "#fff" }}>Carregando...</Text>
+      ) : (
+        category ? (
+          <Carousel places={category.places} navigation={navigation} category="Cultura" />
+        ) : (
+          null
+        )
+      )}
+      <Footer isCarouselOrHomeScreen={true} />
     </View>
   );
 };

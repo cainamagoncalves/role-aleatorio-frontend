@@ -14,20 +14,20 @@ export function Home({ navigation }: IHomeProps) {
   const [categories, setCategories] = useState<ICategoryDTO[]>([])
 
   useEffect(() => {
-    async () => {
-      const categories = await api.get<ICategoryDTO[]>("/categorias");
+    async function setCategoriesEffect() {
+      const categories = await api.get<ICategoryDTO[]>("/category");
       setCategories(categories);
     }
 
-    () => { };
+    setCategoriesEffect();
   }, [])
 
   return (
     <View style={styles.container}>
       <Header isHomeScreen={true} />
-      {categories.map(category => {
-        <CategoryCard category={category} navigation={navigation} />
-      })}
+      {categories.map(category => (
+        <CategoryCard key={String(category.id)} category={category} navigation={navigation} />
+        ))}
       <Footer isCarouselOrHomeScreen={true} />
     </View>
   );

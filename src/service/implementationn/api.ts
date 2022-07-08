@@ -6,7 +6,7 @@ export class Api implements IApiProvider {
 
   constructor() {
     this.server = axios.create({
-      baseURL: 'http://localhost:8093/',
+      baseURL: 'https://role-aleatorio.herokuapp.com',
       headers: { 'content-type': 'application/json' },
       timeout: 10000
     })

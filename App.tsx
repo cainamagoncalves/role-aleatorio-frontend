@@ -9,14 +9,6 @@ import { CultureCarousel } from './src/pages/Culture/CultureCarousel';
 import { ParkCarousel } from './src/pages/Park/ParkCarousel';
 import { OvernightCarousel } from './src/pages/Overnight/OvernightCarousel';
 
-export interface IRootStackParamList {
-  Home: undefined;
-  Culture: undefined;
-  CultureCarousel: undefined;
-  Park: undefined;
-  Overnight: undefined;
-}
-
 export default function App() {
   const [fontsLoaded] = useFonts({
     Poppins_200ExtraLight,

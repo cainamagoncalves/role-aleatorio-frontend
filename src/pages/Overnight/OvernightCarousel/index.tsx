@@ -2,16 +2,15 @@ import { View } from "react-native";
 import { Carousel } from "../../../components/Carousel";
 import { Footer } from "../../../components/Footer";
 import { Header } from "../../../components/Header";
+import { NavigationProps } from "../../../utils/routeTypes/route-types";
 import { styles } from "../styles";
 
-interface IOvernightCarouselProps {
-  navigation: any;
-}
+interface IOvernightCarouselProps extends NavigationProps {}
 
 const data = [
-  { id: 0, src: require("../../../public/images/casa-das-rosas.jpg") },
-  { id: 1, src: require("../../../public/images/overnight.jpg") },
-  { id: 2, src: require("../../../public/images/marioCovasPark.jpg") }
+  { id: 0, src: require("../../../public/images/casa-das-rosas.jpg"), title: "Casa das Rosas", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin cursus vestibulum. Pellentesque eu dictum mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi posuere tellus ut euismod auctor. Vivamus ultricies at nunc quis congue. In tempor erat faucibus, convallis lacus eget, pretium turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus gravida purus eget aliquet imperdiet. Curabitur eget leo tempor, tincidunt dolor ut, vulputate massa. Nulla et sem sit amet nisl scelerisque vehicula vitae sit amet eros. Maecenas pretium, ante ut fermentum consectetur, massa lacus porttitor mauris, sed bibendum libero ligula sed dui. Curabitur id finibus est, nec iaculis nunc. Quisque vitae congue massa. Curabitur malesuada fermentum nunc id dictum." },
+  { id: 1, src: require("../../../public/images/overnight.jpg"), title: "Parque noturno", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin cursus vestibulum. Pellentesque eu dictum mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi posuere tellus ut euismod auctor. Vivamus ultricies at nunc quis congue. In tempor erat faucibus, convallis lacus eget, pretium turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus gravida purus eget aliquet imperdiet. Curabitur eget leo tempor, tincidunt dolor ut, vulputate massa. Nulla et sem sit amet nisl scelerisque vehicula vitae sit amet eros. Maecenas pretium, ante ut fermentum consectetur, massa lacus porttitor mauris, sed bibendum libero ligula sed dui. Curabitur id finibus est, nec iaculis nunc. Quisque vitae congue massa. Curabitur malesuada fermentum nunc id dictum."  },
+  { id: 2, src: require("../../../public/images/marioCovasPark.jpg"), title: "Parque Mario Covas", text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sollicitudin cursus vestibulum. Pellentesque eu dictum mauris. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi posuere tellus ut euismod auctor. Vivamus ultricies at nunc quis congue. In tempor erat faucibus, convallis lacus eget, pretium turpis. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Phasellus gravida purus eget aliquet imperdiet. Curabitur eget leo tempor, tincidunt dolor ut, vulputate massa. Nulla et sem sit amet nisl scelerisque vehicula vitae sit amet eros. Maecenas pretium, ante ut fermentum consectetur, massa lacus porttitor mauris, sed bibendum libero ligula sed dui. Curabitur id finibus est, nec iaculis nunc. Quisque vitae congue massa. Curabitur malesuada fermentum nunc id dictum."  }
 ];
 
 export function OvernightCarousel({ navigation }: IOvernightCarouselProps) {

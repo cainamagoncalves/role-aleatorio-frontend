@@ -1,10 +1,11 @@
 import { ImageBackground, Text, View } from "react-native";
+import { ICategoryDTO } from "../../../utils/dto/ICategoryDTO";
+import { CategoryNavigationProps, IRootStackParamList } from "../../../utils/routeTypes/route-types";
 
 import { styles } from "./styles";
 
-interface ICategoryCardProps {
-  category: string;
-  navigation: any;
+interface ICategoryCardProps extends CategoryNavigationProps {
+  category: ICategoryDTO;
 };
 
 const categories = {
@@ -24,7 +25,7 @@ const categories = {
 
 export function CategoryCard({ category, navigation }: ICategoryCardProps) {
 
-  const categoryInfo = categories[category.toUpperCase() as keyof typeof categories];
+  const categoryInfo = categories[category.name.toUpperCase() as keyof typeof categories];
 
   return (
     <View>
@@ -34,7 +35,9 @@ export function CategoryCard({ category, navigation }: ICategoryCardProps) {
           style={styles.container}
           imageStyle={styles.image}
         >
-          <Text onPress={() => navigation.navigate(categoryInfo.navigationPath)} style={styles.text}>{category}</Text>
+          <Text onPress={() => navigation.navigate(categoryInfo.navigationPath as keyof Pick<IRootStackParamList, "CultureCarousel" | "OvernightCarousel" | "ParkCarousel">, {
+            categoryId: category.id,
+          })} style={styles.text}>{category.name}</Text>
         </ImageBackground>
       )}
     </View>

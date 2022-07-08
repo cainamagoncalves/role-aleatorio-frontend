@@ -1,14 +1,11 @@
 import { Image, TouchableOpacity, View } from "react-native";
+import { IPlaceDTO } from "../../../utils/dto/IPlaceDTO";
+import { NavigationProps } from "../../../utils/routeTypes/route-types";
 
 import { styles } from "./styles";
 
-interface ICarouselItemProps {
-  item: {
-    src: number;
-    title: string;
-    text: string;
-  };
-  navigation: any;
+interface ICarouselItemProps extends NavigationProps {
+  place: IPlaceDTO;
   category: string;
 };
 
@@ -20,18 +17,21 @@ function switchNavigationPath(category: string) {
       return "Overnight";
     case "Parque":
       return "Park";
+    default:
+      return "Park"
   };
 };
 
-export function CarouselItem({ category, item, navigation }: ICarouselItemProps) {
+export function CarouselItem({ category, place, navigation }: ICarouselItemProps) {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={() => navigation.navigate(switchNavigationPath(category), {
-        src: item.src,
-        title: item.title,
-        text: item.text,
+        id: place.id,
+        src: place.imagem,
+        title: place.name,
+        text: place.description,
       })}>
-        <Image source={item.src} style={styles.image} />
+        <Image source={{ uri: place.imagem }} style={styles.image} />
       </TouchableOpacity>
     </View>
   );

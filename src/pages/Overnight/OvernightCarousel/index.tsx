@@ -21,7 +21,7 @@ export function OvernightCarousel({ navigation, route }: IOvernightCarouselProps
         <Text style={{ flex: 1, color: "#fff" }}>Carregando...</Text>
       ) : (
         category ? (
-          <Carousel places={category.places} navigation={navigation} category="Cultura" />
+          <Carousel places={category.places} navigation={navigation} category="Noturno" />
         ) : (
           null
         )

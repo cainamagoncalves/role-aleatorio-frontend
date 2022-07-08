@@ -44,7 +44,7 @@ import {...} from "react-native";
 import { ViewPropTypes } from "deprecated-react-native-prop-types";
 ```
 
-node_modules/react-native-snap-carousel/src/carousel/Carousel.js
-node_modules/react-native-snap-carousel/src/pagination/Pagination.js
-node_modules/react-native-snap-carousel/src/pagination/PaginationDot.js
-node_modules/react-native-snap-carousel/src/parallaximage/ParallaxImage.js
+node_modules/react-native-snap-carousel/src/carousel/Carousel.js<br>
+node_modules/react-native-snap-carousel/src/pagination/Pagination.js<br>
+node_modules/react-native-snap-carousel/src/pagination/PaginationDot.js<br>
+node_modules/react-native-snap-carousel/src/parallaximage/ParallaxImage.js<br>
